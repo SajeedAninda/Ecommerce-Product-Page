@@ -12,23 +12,23 @@ const Navbar = () => {
                     <img className='cursor-pointer' src={logo} alt="Logo" />
 
                     <ul className='flex gap-8 items-center h-full'>
-                        <li className='relative text-[#687078] cursor-pointer hover:text-black h-full flex items-center'>
+                        <li className='relative text-[#687078] cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
                             Collections
                             <span className='hover-border'></span>
                         </li>
-                        <li className='relative text-[#687078] cursor-pointer hover:text-black h-full flex items-center'>
+                        <li className='relative text-[#687078] cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
                             Men
                             <span className='hover-border'></span>
                         </li>
-                        <li className='relative text-[#687078] cursor-pointer hover:text-black h-full flex items-center'>
+                        <li className='relative text-[#687078] cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
                             Women
                             <span className='hover-border'></span>
                         </li>
-                        <li className='relative text-[#687078] cursor-pointer hover:text-black h-full flex items-center'>
+                        <li className='relative text-[#687078] cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
                             About
                             <span className='hover-border'></span>
                         </li>
-                        <li className='relative text-[#687078] cursor-pointer hover:text-black h-full flex items-center'>
+                        <li className='relative text-[#687078] cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
                             Contact
                             <span className='hover-border'></span>
                         </li>
