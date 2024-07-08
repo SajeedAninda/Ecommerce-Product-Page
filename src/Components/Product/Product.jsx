@@ -3,6 +3,10 @@ import image1 from "../../assets/image-product-1.jpg";
 import minusIcon from "../../assets/icon-minus.svg";
 import plusIcon from "../../assets/icon-plus.svg";
 import cartIcon from "../../assets/icon-cart.svg";
+import thumbnailImage1 from "../../assets/image-product-1-thumbnail.jpg";
+import thumbnailImage2 from "../../assets/image-product-2-thumbnail.jpg";
+import thumbnailImage3 from "../../assets/image-product-3-thumbnail.jpg";
+import thumbnailImage4 from "../../assets/image-product-4-thumbnail.jpg";
 
 const Product = () => {
     return (
@@ -10,6 +14,15 @@ const Product = () => {
             <div className='w-[75%] mx-auto py-12 flex justify-between items-center gap-32'>
                 <div className='imgDiv flex-1'>
                     <img className='rounded-2xl' src={image1} alt="" />
+                    <div className='grid grid-cols-4 gap-6 w-full mt-8'>
+                        <img className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage1} alt="" />
+                        <img className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage2} alt="" />
+                        <img className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage3} alt="" />
+                        <img className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage4} alt="" />
+                    </div>
+                    <div>
+
+                    </div>
                 </div>
 
                 <div className='textDiv flex-1 space-y-6'>
