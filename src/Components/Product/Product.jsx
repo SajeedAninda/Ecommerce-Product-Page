@@ -11,9 +11,8 @@ import thumbnailImage2 from "../../assets/image-product-2-thumbnail.jpg";
 import thumbnailImage3 from "../../assets/image-product-3-thumbnail.jpg";
 import thumbnailImage4 from "../../assets/image-product-4-thumbnail.jpg";
 
-
 const Product = () => {
-    let [productImage, setProductImage] = useState(image1);
+    const [productImage, setProductImage] = useState(image1);
 
     const handleImageChange = (image) => {
         setProductImage(image);
@@ -23,15 +22,12 @@ const Product = () => {
         <div>
             <div className='w-[75%] mx-auto py-12 flex justify-between items-center gap-32'>
                 <div className='imgDiv flex-1'>
-                    <img className='rounded-2xl transition-all delay-300' src={productImage} alt="" />
+                    <img key={productImage} className='rounded-2xl transition-opacity duration-300 opacity-0' onLoad={(e) => e.target.style.opacity = 1} src={productImage} alt="Product" />
                     <div className='grid grid-cols-4 gap-6 w-full mt-8'>
-                        <img onClick={() => handleImageChange(image1)} className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage1} alt="" />
-                        <img onClick={() => handleImageChange(image2)} className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage2} alt="" />
-                        <img onClick={() => handleImageChange(image3)} className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage3} alt="" />
-                        <img onClick={() => handleImageChange(image4)} className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage4} alt="" />
-                    </div>
-                    <div>
-
+                        <img onClick={() => handleImageChange(image1)} className='rounded-2xl cursor-pointer hover:opacity-70' src={thumbnailImage1} alt="Thumbnail 1" />
+                        <img onClick={() => handleImageChange(image2)} className='rounded-2xl cursor-pointer hover:opacity-70' src={thumbnailImage2} alt="Thumbnail 2" />
+                        <img onClick={() => handleImageChange(image3)} className='rounded-2xl cursor-pointer hover:opacity-70' src={thumbnailImage3} alt="Thumbnail 3" />
+                        <img onClick={() => handleImageChange(image4)} className='rounded-2xl cursor-pointer hover:opacity-70' src={thumbnailImage4} alt="Thumbnail 4" />
                     </div>
                 </div>
 
@@ -53,16 +49,16 @@ const Product = () => {
                     <div className='flex justify-between gap-4'>
                         <div className='flex justify-between bg-[#F7F8FD] w-[40%] px-4 rounded-lg'>
                             <button>
-                                <img src={minusIcon} alt="" />
+                                <img src={minusIcon} alt="Minus Icon" />
                             </button>
                             <p className='text-[18px] text-[#1d2025] font-bold leading-[48px]'>{0}</p>
                             <button>
-                                <img src={plusIcon} alt="" />
+                                <img src={plusIcon} alt="Plus Icon" />
                             </button>
                         </div>
 
                         <div className='flex justify-center text-[#1d2025] font-bold cursor-pointer hover:opacity-70 items-center gap-4 py-4 rounded-lg px-8 bg-[#FF7D1A] w-[60%]'>
-                            <img className='w-[24px]' src={cartIcon} alt="" />
+                            <img className='w-[24px]' src={cartIcon} alt="Cart Icon" />
                             Add To Cart
                         </div>
                     </div>
