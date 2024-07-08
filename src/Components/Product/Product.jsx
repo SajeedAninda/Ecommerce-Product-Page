@@ -13,9 +13,20 @@ import thumbnailImage4 from "../../assets/image-product-4-thumbnail.jpg";
 
 const Product = () => {
     const [productImage, setProductImage] = useState(image1);
+    let [quantity, setQuantity] = useState(0);
 
     const handleImageChange = (image) => {
         setProductImage(image);
+    }
+
+    let handleQuantityIncrement = () => {
+        setQuantity(quantity + 1)
+    }
+
+    let handleQuantityDecrement = () => {
+        if (quantity > 0) {
+            setQuantity(quantity - 1);
+        }
     }
 
     return (
@@ -49,11 +60,11 @@ const Product = () => {
                     <div className='flex justify-between gap-4'>
                         <div className='flex justify-between bg-[#F7F8FD] w-[40%] px-4 rounded-lg'>
                             <button>
-                                <img src={minusIcon} alt="Minus Icon" />
+                                <img onClick={handleQuantityDecrement} src={minusIcon} alt="Minus Icon" />
                             </button>
-                            <p className='text-[18px] text-[#1d2025] font-bold leading-[48px]'>{0}</p>
+                            <p className='text-[18px] text-[#1d2025] font-bold leading-[48px]'>{quantity}</p>
                             <button>
-                                <img src={plusIcon} alt="Plus Icon" />
+                                <img onClick={handleQuantityIncrement} src={plusIcon} alt="Plus Icon" />
                             </button>
                         </div>
 
