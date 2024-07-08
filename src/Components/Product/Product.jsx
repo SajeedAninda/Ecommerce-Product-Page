@@ -1,24 +1,34 @@
-import React from 'react';
-import image1 from "../../assets/image-product-1.jpg";
+import React, { useState } from 'react';
 import minusIcon from "../../assets/icon-minus.svg";
 import plusIcon from "../../assets/icon-plus.svg";
 import cartIcon from "../../assets/icon-cart.svg";
+import image1 from "../../assets/image-product-1.jpg";
+import image2 from "../../assets/image-product-2.jpg";
+import image3 from "../../assets/image-product-3.jpg";
+import image4 from "../../assets/image-product-4.jpg";
 import thumbnailImage1 from "../../assets/image-product-1-thumbnail.jpg";
 import thumbnailImage2 from "../../assets/image-product-2-thumbnail.jpg";
 import thumbnailImage3 from "../../assets/image-product-3-thumbnail.jpg";
 import thumbnailImage4 from "../../assets/image-product-4-thumbnail.jpg";
 
+
 const Product = () => {
+    let [productImage, setProductImage] = useState(image1);
+
+    const handleImageChange = (image) => {
+        setProductImage(image);
+    }
+
     return (
         <div>
             <div className='w-[75%] mx-auto py-12 flex justify-between items-center gap-32'>
                 <div className='imgDiv flex-1'>
-                    <img className='rounded-2xl' src={image1} alt="" />
+                    <img className='rounded-2xl transition-all delay-300' src={productImage} alt="" />
                     <div className='grid grid-cols-4 gap-6 w-full mt-8'>
-                        <img className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage1} alt="" />
-                        <img className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage2} alt="" />
-                        <img className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage3} alt="" />
-                        <img className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage4} alt="" />
+                        <img onClick={() => handleImageChange(image1)} className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage1} alt="" />
+                        <img onClick={() => handleImageChange(image2)} className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage2} alt="" />
+                        <img onClick={() => handleImageChange(image3)} className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage3} alt="" />
+                        <img onClick={() => handleImageChange(image4)} className='rounded-2xl  cursor-pointer hover:opacity-70' src={thumbnailImage4} alt="" />
                     </div>
                     <div>
 
