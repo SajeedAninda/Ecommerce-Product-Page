@@ -17,3 +17,8 @@ ul li .hover-border {
 ul li:hover .hover-border {
     opacity: 1;
 }
+
+
+.cartDetails{
+    box-shadow: 5px 15px 20px 15px rgba(0, 0, 0, 0.15);
+}
