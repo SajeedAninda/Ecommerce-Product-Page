@@ -11,21 +11,24 @@ import thumbnailImage2 from "../../assets/image-product-2-thumbnail.jpg";
 import thumbnailImage3 from "../../assets/image-product-3-thumbnail.jpg";
 import thumbnailImage4 from "../../assets/image-product-4-thumbnail.jpg";
 
-const Product = () => {
+const Product = ({ setQuantity }) => {
     const [productImage, setProductImage] = useState(image1);
-    let [quantity, setQuantity] = useState(0);
+    const [quantity, localSetQuantity] = useState(0);
+
 
     const handleImageChange = (image) => {
         setProductImage(image);
     }
 
-    let handleQuantityIncrement = () => {
-        setQuantity(quantity + 1)
+    const handleQuantityIncrement = () => {
+        setQuantity(quantity + 1);
+        localSetQuantity(quantity + 1);
     }
 
-    let handleQuantityDecrement = () => {
+    const handleQuantityDecrement = () => {
         if (quantity > 0) {
             setQuantity(quantity - 1);
+            localSetQuantity(quantity - 1);
         }
     }
 

@@ -6,12 +6,14 @@ import "./navbar.css";
 import thumbnailImage1 from "../../assets/image-product-1-thumbnail.jpg";
 import deleteIcon from "../../assets/icon-delete.svg"
 
-const Navbar = () => {
+const Navbar = ({ quantity }) => {
     let [openCart, setOpenCart] = useState(false);
 
     let handleOpenCart = () => {
         setOpenCart(!openCart);
     }
+
+    console.log(quantity);
 
     return (
         <div className='h-[15vh] w-full flex items-center relative'>
@@ -45,6 +47,7 @@ const Navbar = () => {
 
                 <div className='flex justify-end w-[35%] items-center gap-8'>
                     <div className=''>
+                        <p className='bg-[#FF7D1A] px-2 font-bold rounded-full flex justify-center items-center text-white text-[10px] absolute right-[165px] top-7'>{quantity}</p>
                         <img onClick={handleOpenCart} className='cursor-pointer w-[25px]' src={cartIcon} alt="Cart Icon" />
                         {
                             openCart &&
@@ -53,17 +56,26 @@ const Navbar = () => {
                                     <p className='text-[#1d2025] p-8 font-bold'>Cart</p>
                                 </div>
 
-                                <div className='flex gap-3 items-center p-8'>
-                                    <img className='w-[65px] rounded-lg' src={thumbnailImage1} alt="" />
-                                    <div className='flex flex-col'>
-                                        <p className='text-[#687078]'>Fall Limited Edition Sneakers</p>
-                                        <div className='flex gap-3'>
-                                            <p className='text-[#687078]'>$125.00 X 1</p>
-                                            <p className='text-[#1d2025] font-bold'>$125.00</p>
+                                {
+                                    quantity ?
+                                        <div>
+                                            <div className='flex gap-3 items-center p-8'>
+                                                <img className='w-[65px] rounded-lg' src={thumbnailImage1} alt="" />
+                                                <div className='flex flex-col'>
+                                                    <p className='text-[#687078]'>Fall Limited Edition Sneakers</p>
+                                                    <div className='flex gap-3'>
+                                                        <p className='text-[#687078]'>$125.00 X {quantity}</p>
+                                                        <p className='text-[#1d2025] font-bold'>${125.00 * quantity}.00</p>
+                                                    </div>
+                                                </div>
+                                                <img className='ml-4 w-[15px] cursor-pointer' src={deleteIcon} alt="" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <img className='ml-4 w-[15px] cursor-pointer' src={deleteIcon} alt="" />
-                                </div>
+                                        :
+                                        <div className='flex justify-center items-center py-20'>
+                                            <p className='text-[#687078] text-[18px] font-bold'>Your Cart is Empty</p>
+                                        </div>
+                                }
                             </div>
                         }
                     </div>
