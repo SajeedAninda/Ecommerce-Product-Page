@@ -6,14 +6,16 @@ import "./navbar.css";
 import thumbnailImage1 from "../../assets/image-product-1-thumbnail.jpg";
 import deleteIcon from "../../assets/icon-delete.svg"
 
-const Navbar = ({ quantity }) => {
+const Navbar = ({ quantity, setQuantity }) => {
     let [openCart, setOpenCart] = useState(false);
 
     let handleOpenCart = () => {
         setOpenCart(!openCart);
     }
 
-    console.log(quantity);
+    let deleteCart = () => {
+        setQuantity(0);
+    }
 
     return (
         <div className='h-[15vh] w-full flex items-center relative'>
@@ -68,7 +70,7 @@ const Navbar = ({ quantity }) => {
                                                         <p className='text-[#1d2025] font-bold'>${125.00 * quantity}.00</p>
                                                     </div>
                                                 </div>
-                                                <img className='ml-4 w-[15px] cursor-pointer' src={deleteIcon} alt="" />
+                                                <img onClick={deleteCart} className='ml-4 w-[15px] cursor-pointer' src={deleteIcon} alt="" />
                                             </div>
                                         </div>
                                         :
