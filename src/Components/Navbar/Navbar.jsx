@@ -49,7 +49,10 @@ const Navbar = ({ quantity, setQuantity }) => {
 
                 <div className='flex justify-end w-[35%] items-center gap-8'>
                     <div className=''>
-                        <p className='bg-[#FF7D1A] px-2 font-bold rounded-full flex justify-center items-center text-white text-[10px] absolute right-[165px] top-7'>{quantity}</p>
+                        {
+                            quantity > 0 &&
+                            <p className='bg-[#FF7D1A] px-2 font-bold rounded-full flex justify-center items-center text-white text-[10px] absolute right-[165px] top-7'>{quantity}</p>
+                        }
                         <img onClick={handleOpenCart} className='cursor-pointer w-[25px]' src={cartIcon} alt="Cart Icon" />
                         {
                             openCart &&

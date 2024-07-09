@@ -10,33 +10,55 @@ import thumbnailImage1 from "../../assets/image-product-1-thumbnail.jpg";
 import thumbnailImage2 from "../../assets/image-product-2-thumbnail.jpg";
 import thumbnailImage3 from "../../assets/image-product-3-thumbnail.jpg";
 import thumbnailImage4 from "../../assets/image-product-4-thumbnail.jpg";
+import nextIcon from "../../assets/icon-next.svg"
+import previousIcon from "../../assets/icon-previous.svg"
 
 const Product = ({ setQuantity }) => {
     const [productImage, setProductImage] = useState(image1);
     const [quantity, localSetQuantity] = useState(0);
-
+    const [showPopup, setShowPopup] = useState(false);
+    const [lightboxVisible, setLightboxVisible] = useState(false);
 
     const handleImageChange = (image) => {
         setProductImage(image);
     }
 
     const handleQuantityIncrement = () => {
-        setQuantity(quantity + 1);
         localSetQuantity(quantity + 1);
     }
 
     const handleQuantityDecrement = () => {
         if (quantity > 0) {
-            setQuantity(quantity - 1);
             localSetQuantity(quantity - 1);
         }
+    }
+
+    const handleAddToCart = () => {
+        if (quantity === 0) {
+            setShowPopup(true);
+        } else {
+            setQuantity(prevQuantity => prevQuantity + quantity);
+            localSetQuantity(0);
+        }
+    }
+
+    const closePopup = () => {
+        setShowPopup(false);
+    }
+
+    const openLightbox = () => {
+        setLightboxVisible(true);
+    }
+
+    const closeLightbox = () => {
+        setLightboxVisible(false);
     }
 
     return (
         <div>
             <div className='w-[75%] mx-auto py-12 flex justify-between items-center gap-32'>
                 <div className='imgDiv flex-1'>
-                    <img key={productImage} className='rounded-2xl transition-opacity duration-300 opacity-0' onLoad={(e) => e.target.style.opacity = 1} src={productImage} alt="Product" />
+                    <img key={productImage} className='rounded-2xl transition-opacity duration-300 opacity-0 cursor-pointer' onLoad={(e) => e.target.style.opacity = 1} src={productImage} alt="Product" onClick={openLightbox} />
                     <div className='grid grid-cols-4 gap-6 w-full mt-8'>
                         <img onClick={() => handleImageChange(image1)} className='rounded-2xl cursor-pointer hover:opacity-70' src={thumbnailImage1} alt="Thumbnail 1" />
                         <img onClick={() => handleImageChange(image2)} className='rounded-2xl cursor-pointer hover:opacity-70' src={thumbnailImage2} alt="Thumbnail 2" />
@@ -71,7 +93,7 @@ const Product = ({ setQuantity }) => {
                             </button>
                         </div>
 
-                        <div className='flex justify-center text-[#1d2025] font-bold cursor-pointer hover:opacity-70 items-center gap-4 py-4 rounded-lg px-8 bg-[#FF7D1A] w-[60%]'>
+                        <div onClick={handleAddToCart} className='flex justify-center text-[#1d2025] font-bold cursor-pointer hover:opacity-70 items-center gap-4 py-4 rounded-lg px-8 bg-[#FF7D1A] w-[60%]'>
                             <img className='w-[24px]' src={cartIcon} alt="Cart Icon" />
                             Add To Cart
                         </div>
@@ -79,6 +101,32 @@ const Product = ({ setQuantity }) => {
 
                 </div>
             </div>
+
+            {showPopup &&
+                <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
+                    <div className='bg-white p-8 rounded-lg'>
+                        <p className='text-[#1d2025] text-[18px] font-bold text-center'>Please add a quantity before adding to the cart.</p>
+                        <div className='flex justify-center'>
+                            <button onClick={closePopup} className='mt-4 px-4 py-2 bg-[#FF7D1A] text-white rounded-lg flex justify-center'>Close</button>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            {lightboxVisible &&
+                <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50'>
+                    <div className=' flex justify-center items-center flex-col'>
+                        <img className='rounded-2xl transition-opacity duration-300 opacity-100 cursor-pointer max-h-[70vh] max-w-[90vw]' src={productImage} alt="Lightbox Product" />
+                        <div className='grid grid-cols-4 gap-6 w-[50%] mt-8'>
+                            <img onClick={() => handleImageChange(image1)} className='rounded-2xl cursor-pointer hover:opacity-70' src={thumbnailImage1} alt="Thumbnail 1" />
+                            <img onClick={() => handleImageChange(image2)} className='rounded-2xl cursor-pointer hover:opacity-70' src={thumbnailImage2} alt="Thumbnail 2" />
+                            <img onClick={() => handleImageChange(image3)} className='rounded-2xl cursor-pointer hover:opacity-70' src={thumbnailImage3} alt="Thumbnail 3" />
+                            <img onClick={() => handleImageChange(image4)} className='rounded-2xl cursor-pointer hover:opacity-70' src={thumbnailImage4} alt="Thumbnail 4" />
+                        </div>
+                        <button onClick={closeLightbox} className='absolute top-0 right-[450px] text-white text-xl font-bold hover:text-[#FF7D1A]'>x</button>
+                    </div>
+                </div>
+            }
         </div>
     );
 };
