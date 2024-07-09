@@ -5,12 +5,23 @@ import cartIcon from "../../assets/icon-cart.svg";
 import "./navbar.css";
 import thumbnailImage1 from "../../assets/image-product-1-thumbnail.jpg";
 import deleteIcon from "../../assets/icon-delete.svg"
+import menuBar from "../../assets/icon-menu.svg"
+import iconClose from "../../assets/icon-close.svg"
 
 const Navbar = ({ quantity, setQuantity }) => {
     let [openCart, setOpenCart] = useState(false);
+    let [menuOpen, setMenuOpen] = useState(false);
 
     let handleOpenCart = () => {
         setOpenCart(!openCart);
+    }
+
+    let handleMenuOpen = () => {
+        setMenuOpen(true);
+    }
+
+    let handleMenuClose = () => {
+        setMenuOpen(false);
     }
 
     let deleteCart = () => {
@@ -19,32 +30,73 @@ const Navbar = ({ quantity, setQuantity }) => {
 
     return (
         <div className='h-[15vh] w-full flex items-center relative'>
-            <div className='w-[85%] mx-auto flex justify-between items-center border-b border-gray-200 py-8'>
-                <div className='flex gap-16 w-[65%]'>
+            <div className='w-full lg:w-[85%] mx-auto flex justify-between items-center border-b border-gray-200 py-8 px-8 lg:px-0'>
+                <div className='flex flex-row-reverse items-center lg:flex-row gap-4 lg:gap-16 lg:w-[65%]'>
                     <img className='cursor-pointer' src={logo} alt="Logo" />
 
-                    <ul className='flex gap-8 items-center h-full'>
-                        <li className='relative text-[#687078] cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
-                            Collections
-                            <span className='hover-border'></span>
-                        </li>
-                        <li className='relative text-[#687078] cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
-                            Men
-                            <span className='hover-border'></span>
-                        </li>
-                        <li className='relative text-[#687078] cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
-                            Women
-                            <span className='hover-border'></span>
-                        </li>
-                        <li className='relative text-[#687078] cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
-                            About
-                            <span className='hover-border'></span>
-                        </li>
-                        <li className='relative text-[#687078] cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
-                            Contact
-                            <span className='hover-border'></span>
-                        </li>
-                    </ul>
+                    <div>
+                        <img onClick={handleMenuOpen} className='block lg:hidden' src={menuBar} alt="" />
+
+                        <div>
+                            {
+                                menuOpen ?
+                                    <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 h-screen'>
+                                        <ul onClick={handleMenuClose} className='flex absolute top-0 left-0 flex-col bg-white z-20 h-screen w-[60vw] lg:hidden items-start justify-start px-6 py-12'>
+                                            <img className='w-[20px]' src={iconClose} alt="" />
+
+                                            <li className='relative text-[#1d2025] font-bold cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
+                                                Collections
+                                                <span className='hover-border'></span>
+                                            </li>
+                                            <li className='relative text-[#1d2025] font-bold cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
+                                                Men
+                                                <span className='hover-border'></span>
+                                            </li>
+                                            <li className='relative text-[#1d2025] font-bold cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
+                                                Women
+                                                <span className='hover-border'></span>
+                                            </li>
+                                            <li className='relative text-[#1d2025] font-bold cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
+                                                About
+                                                <span className='hover-border'></span>
+                                            </li>
+                                            <li className='relative text-[#1d2025] font-bold cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
+                                                Contact
+                                                <span className='hover-border'></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    :
+                                    <ul className='hidden lg:flex gap-8 items-center h-full'>
+                                        <li className='relative text-[#687078] cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
+                                            Collections
+                                            <span className='hover-border'></span>
+                                        </li>
+                                        <li className='relative text-[#687078] cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
+                                            Men
+                                            <span className='hover-border'></span>
+                                        </li>
+                                        <li className='relative text-[#687078] cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
+                                            Women
+                                            <span className='hover-border'></span>
+                                        </li>
+                                        <li className='relative text-[#687078] cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
+                                            About
+                                            <span className='hover-border'></span>
+                                        </li>
+                                        <li className='relative text-[#687078] cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
+                                            Contact
+                                            <span className='hover-border'></span>
+                                        </li>
+                                    </ul>
+                            }
+
+
+
+
+                        </div>
+                    </div>
                 </div>
 
                 <div className='flex justify-end w-[35%] items-center gap-8'>
