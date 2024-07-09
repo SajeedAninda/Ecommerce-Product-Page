@@ -71,7 +71,7 @@ const Product = ({ setQuantity }) => {
 
     return (
         <div>
-            <div className='w-[75%] mx-auto py-12 flex justify-between items-center gap-32'>
+            <div className='w-[75%] mx-auto py-12 flex flex-col lg:flex-row justify-between items-center gap-32'>
                 <div className='imgDiv flex-1'>
                     <img
                         key={productImage}
@@ -103,7 +103,7 @@ const Product = ({ setQuantity }) => {
                         These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.
                     </p>
 
-                    <div>
+                    <div className='flex flex-row lg:flex-col gap-8 lg:gap-0'>
                         <div className='flex gap-4 items-center'>
                             <p className='text-[28px] text-[#1d2025] font-bold leading-[48px]'>$125.00</p>
                             <p className='py-1 px-3 rounded-lg text-white text-[18px] bg-[#1d2025]'>50%</p>
@@ -111,8 +111,8 @@ const Product = ({ setQuantity }) => {
                         <p className='line-through text-[#687078] text-[18px] font-bold opacity-45'>$250.00</p>
                     </div>
 
-                    <div className='flex justify-between gap-4'>
-                        <div className='flex justify-between bg-[#F7F8FD] w-[40%] px-4 rounded-lg'>
+                    <div className='flex lg:flex-row flex-col justify-between gap-4'>
+                        <div className='flex justify-between bg-[#F7F8FD] w-full lg:w-[40%] px-4 rounded-lg'>
                             <button>
                                 <img onClick={handleQuantityDecrement} src={minusIcon} alt="Minus Icon" />
                             </button>
@@ -122,8 +122,8 @@ const Product = ({ setQuantity }) => {
                             </button>
                         </div>
 
-                        <div onClick={handleAddToCart} className='flex justify-center text-[#1d2025] font-bold cursor-pointer hover:opacity-60 items-center gap-4 py-4 rounded-lg px-8 bg-[#FF7D1A] w-[60%]'>
-                            <img className='w-[24px]' src={cartIcon} alt="Cart Icon" />
+                        <div onClick={handleAddToCart} className='flex justify-center text-[#1d2025] font-bold cursor-pointer hover:opacity-60 items-center gap-4 py-4 rounded-lg px-8 bg-[#FF7D1A] w-full lg:w-[60%]'>
+                            <img className='w-[24px] text-black fill-black' src={cartIcon} alt="Cart Icon" />
                             Add To Cart
                         </div>
                     </div>
