@@ -40,8 +40,8 @@ const Navbar = ({ quantity, setQuantity }) => {
                         <div>
                             {
                                 menuOpen ?
-                                    <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 h-screen'>
-                                        <ul onClick={handleMenuClose} className='flex absolute top-0 left-0 flex-col bg-white z-20 h-screen w-[60vw] lg:hidden items-start justify-start px-6 py-12'>
+                                    <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 h-screen z-50'>
+                                        <ul onClick={handleMenuClose} className='flex absolute top-0 left-0 flex-col bg-white z-50 h-screen w-[60vw] lg:hidden items-start justify-start px-6 py-12'>
                                             <img className='w-[20px]' src={iconClose} alt="" />
 
                                             <li className='relative text-[#1d2025] font-bold cursor-pointer hover:text-[#1d2025] h-full flex items-center'>
@@ -108,7 +108,7 @@ const Navbar = ({ quantity, setQuantity }) => {
                         <img onClick={handleOpenCart} className='cursor-pointer w-[25px]' src={cartIcon} alt="Cart Icon" />
                         {
                             openCart &&
-                            <div className='bg-white w-[400px] h-fit  absolute top-20 right-10 rounded-xl cartDetails'>
+                            <div className='bg-white w-[400px] h-fit  absolute top-20 right-0 rounded-xl cartDetails'>
                                 <div className='border-b border-gray-300'>
                                     <p className='text-[#1d2025] p-8 font-bold'>Cart</p>
                                 </div>
